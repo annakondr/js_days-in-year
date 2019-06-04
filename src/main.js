@@ -1,17 +1,19 @@
-'use strict';
+'use strict'
 
 function daysInYear(year) {
-
-    if (Number.isInteger(year)) {
-        let daysInFeb = new Date(year, 1, 29).getDate();
-        if (daysInFeb === 29) {
-            console.log (366)
-        } else {
-            console.log (365)
-        }
+  try {
+    if (!Number.isInteger(year)) {
+      throw new Error (`exception: year should be an integer`);
     } else {
-        console.log('exception')
+      let daysInFeb = new Date(year, 1, 29).getDate();
+      if (daysInFeb === 29) {
+        return 366
+      }
+      return 365
     }
+  } catch(error) {
+    return error.message;
+  }
 }
 
 daysInYear(2019); // 365
